@@ -1,77 +1,110 @@
-# Algorithmic Trading Infrastructure
+# GELA x TradeUP 2026 | Algorithmic Trading Infrastructure
 
-GELA x TradeUP 2026 Global AI Trading Challenge
+**Offline engineering showcase | Python | Reconciliation | State Management | Testing**
 
-## Overview
+An engineering portfolio project derived from research conducted
+during the GELA x TradeUP 2026 Global AI Trading Challenge
+(September-November 2026).
 
-Python-based equity trading research and brokerage-integration
-project developed between September and November 2026.
+The historical project explored equity trading signals, order
+planning, brokerage integration, state reconciliation, and
+operational safety controls.
 
-Environment:
-- Python
-- Pandas
-- Jupyter Notebook
-- TradeUP OpenAPI
-- Windows 11
+**This repository contains independently written, offline
+demonstrations only. It does not contain the historical
+production trading system or executable brokerage integrations.**
 
-The research covered approximately 20 US equities.
+## Engineering Highlights
 
-## Engineering Scope
+### 1. Position Reconciliation
+`src/offline_reconciliation.py`
 
-The original private project contains components for:
+- Compares synthetic broker holdings with shadow-state positions.
+- Uses exact decimal arithmetic for share quantities.
+- Separates total holdings from salable quantities.
+- Detects missing positions and quantity discrepancies.
+- Rejects invalid quantity inputs.
 
-- Market data processing and daily signal generation
-- Trade intent generation and order planning
-- Shadow-state and execution journal management
-- Brokerage order and position reconciliation
-- Execution safeguards and recovery logic
-- Read-only operational monitoring
+### 2. Order Lifecycle and Idempotency
+`src/offline_journal.py`
 
-## Current Status
+- Models planned, submitted, partially filled, filled,
+  and cancelled order states in memory.
+- Demonstrates idempotent planning and fill-event handling.
+- Rejects conflicting event identifiers and overfills.
+- Validates state transitions without submitting orders.
 
-The competition has concluded.
+### 3. Rolling-Window Exit Indexing
+`src/exit_index_demo.py`
 
-Automated trading has been permanently disabled.
-All future trading decisions and executions are manual.
+- Illustrates a stale fixed-index failure mode.
+- Evaluates synthetic T+6 exits using ordered sessions.
+- Covers shifting windows and boundary conditions.
+- Fails closed when required session history is missing.
 
-Historical production trading code is not distributed here.
+This is a synthetic illustration, not a production defect fix.
 
-## Important Limitations
+## Repository Structure
 
-The original system had an unresolved exit-signal indexing defect.
-A scheduled TSLA exit was not generated as intended.
-
-The project does not demonstrate a fully validated
-automated buy/sell lifecycle or consistent profitability.
-
-See docs/limitations.md for details.
-
-## Repository Status
-
-Offline technical showcase with three synthetic Python modules and 27 passing unit tests.
-
-Any future demonstration code must be independently reviewed,
-sanitized, and restricted to offline or simulated operation.
-
-## Offline Demonstration Modules
-
-- Position reconciliation: synthetic broker and shadow-state comparison.
-- Order lifecycle: in-memory transitions, fill events, and idempotency.
-- T+6 exit indexing: synthetic rolling-window defect illustration.
+| Path | Purpose |
+| --- | --- |
+| `src/offline_reconciliation.py` | Synthetic position comparison |
+| `src/offline_journal.py` | In-memory order lifecycle |
+| `src/exit_index_demo.py` | T+6 indexing illustration |
+| `tests/` | 27 offline unit tests |
+| `docs/architecture.md` | Historical workflow overview |
+| `docs/exit_index_case_study.md` | Indexing case study |
+| `docs/limitations.md` | Safety and validation boundaries |
 
 ## Running Tests
 
-Run from the repository root:
+Requirements: Python 3 and its standard library.
 
-    python -B -m unittest discover -s tests -p "test_*.py" -v
+From the repository root:
 
-The 27 tests cover only independently written offline demonstrations.
-They do not validate the historical production trading system.
+```powershell
+python -B -m unittest discover -s tests -p "test_*.py" -v
+```
 
-## Historical Limitations
+The 27 tests validate the three standalone demonstration
+modules. They do not validate the historical brokerage
+integration, live execution, or end-to-end trading lifecycle.
 
-The original trading system had an unresolved SELL exit-indexing defect.
-Automated trading remains disabled; future trades are manual.
-No reliable profitability or fully validated execution is claimed.
+No brokerage credentials or network connection are required
+to run these demonstrations.
 
-See docs/limitations.md and docs/exit_index_case_study.md.
+## Historical System and Safety Boundaries
+
+The historical system included research components for market
+data processing, signal generation, order planning, execution
+journaling, broker reconciliation, and monitoring.
+
+The presence of those components does not establish that the
+historical system was fully validated or reliable in production.
+
+A historical TSLA T+6 SELL intent expected on November 3, 2026
+was not generated as intended. The original indexing issue
+remains unresolved.
+
+Automated trading execution was disabled on November 5, 2026.
+All subsequent trading decisions and executions are manual.
+
+This repository makes no claim of:
+- Verified production trading safety
+- Fully functioning automated buy/sell execution
+- Historical defect remediation in the original system
+- Consistent profitability or superior investment returns
+
+## Technical Documentation
+
+- [Architecture](docs/architecture.md)
+- [Rolling-Window Exit Case Study](docs/exit_index_case_study.md)
+- [Known Limitations](docs/limitations.md)
+
+## Scope
+
+This project is an offline technical showcase of selected
+software-engineering and operational-control concepts.
+
+It is not a trading service, investment recommendation,
+or deployable live trading application.

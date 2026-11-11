@@ -23,7 +23,7 @@ Brokerage Reconciliation
 Operational Monitoring
 
 The original system also contained a live order submission
-path. It is not included in this public demonstration.
+path. It is not included in this offline showcase.
 
 Function-level evidence includes:
 - build_production_signal_snapshot

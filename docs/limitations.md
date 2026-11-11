@@ -15,10 +15,10 @@ production system.
 
 Automated trading has been disabled.
 
-The historical broker API credentials retained trading
-permissions at the time of the safety audit.
-Therefore, this repository must never be treated
-as evidence that all external trading access was revoked.
+Disabling local automation does not revoke broker-side API
+permissions. External trading access requires separate
+credential and permission controls.
+This repository is not evidence of broker-side revocation.
 
 No live credentials, account identifiers, order journals,
 private trading records, or executable production order
